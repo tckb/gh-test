@@ -15,4 +15,5 @@ jobs:
       - name: pull image
         run: |
           docker pull rodolpheche/wiremock:latest
+          docker run --rm rodolpheche/wiremock:latest --verbose
 
