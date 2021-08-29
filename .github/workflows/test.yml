@@ -13,8 +13,6 @@ jobs:
 
     steps:
       - name: pull image
-        uses: docker/build-push-action@v2
-        with:
-         pull: true
-         tags: rodolpheche/wiremock:latest
+        run: |
+          docker pull rodolpheche/wiremock:latest
 
