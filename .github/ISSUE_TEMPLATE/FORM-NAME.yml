@@ -1,62 +1,68 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug", "triage"]
+name: Provider Bug
+description: Report a bug in the provider
+title: "[Provider Bug]: ..."
+labels: ["bug"]
 assignees:
   - ' '
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
+      Thank you for reporting the bug
+
+  - type: textarea
+    id: tf-version
     attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
+      label: Terraform version
+      description: Run `terraform -v` to show the version. If you are not running the latest version of Terraform.
+      placeholder: "Terraform v1.0.3 on darwin_amd64"
     validations:
-      required: false
+      required: true
+
+  - type: textarea
+    id: provider-version
+    attributes:
+      label: Provider version
+      description: The version of provider you are on
+      placeholder: Current version of the provider
+      value: "1.0.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: OS
+    attributes:
+      label: Which operating system are you on?
+      multiple: false
+      options:
+        - (GNU)Linux
+        - MacOs
+
+  - type: dropdown
+    id: Arch
+    attributes:
+      label: Which architecture are you on?
+      multiple: false
+      options:
+        - amd64
+        - '386'
+        - arm
+        - arm64
+
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
+      label: Describe the bug
+      description: A clear and concise description of what the bug is, include any `crash.log, make sure you include all affected resource(s).
       placeholder: Tell us what you see!
-      value: "A bug happened!"
+      value: "Problem is..."
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
+
+
   - type: textarea
     id: logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      label: Debug logs for `Apply` or `Plan`
+      description: Add a detailed copy of the terraform result include, enable trace logs as `TF_LOG=trace terraform plan/apply...`
       render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
