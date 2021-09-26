@@ -7,8 +7,7 @@ assignees:
 body:
   - type: markdown
     attributes:
-      value: |
-      Thank you for reporting the bug
+      value: Thank you for reporting the bug, please fill-in the relevant details
 
   - type: textarea
     id: tf-version
